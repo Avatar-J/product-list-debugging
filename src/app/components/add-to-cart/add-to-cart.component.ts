@@ -8,9 +8,12 @@ import {
 } from '@angular/core';
 import { CartService } from '../../services/cart.service';
 import { Dessert } from '../../../models/dessert';
+import { ModalComponent } from '../modal/modal.component';
+import { CartItem } from '../../../models/cartItem';
 
 @Component({
   selector: 'app-add-to-cart',
+  imports: [ModalComponent],
   templateUrl: './add-to-cart.component.html',
   styleUrl: './add-to-cart.component.scss',
 })
@@ -24,10 +27,12 @@ export class AddToCartComponent implements OnInit {
   cartService = inject(CartService);
   isAddedToCart = false;
   quantity = 1;
+  cartItem!: CartItem[];
 
   ngOnInit(): void {
     this.cartService.cartItems$.subscribe({
       next: (items) => {
+        this.cartItem = items;
         const { itemIndex } = this.cartService.isItemInCart(
           this.dessertItem.name
         );

@@ -1,0 +1,97 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.1);
+  z-index: 99;
+  @include flex(row, center, center);
+
+  .modal-container {
+    width: 592px;
+    min-height: 100px;
+    background-color: $rose-50;
+    padding: 40px;
+    @include flex(column, flex-start, stretch, 32px);
+
+    .modal-header {
+      @include flex(column, flex-start, stretch, 24px);
+
+      img {
+        width: 48px;
+        height: 48px;
+      }
+      .modal-header-text {
+        @include flex(column, flex-start, stretch, 8px);
+
+        h1 {
+          @include TextPreset1;
+          color: $rose-900;
+        }
+        p {
+          color: $rose-500;
+          font-family: $font-regular;
+        }
+      }
+    }
+
+    .order-items {
+      padding: 24px;
+      @include flex(column, flex-start, stretch, 24px);
+      background-color: $rose-100;
+
+      .item {
+        width: 100%;
+        @include flex(row, space-between, center);
+        padding-bottom: 16px;
+        border-bottom: 1px solid $rose-50;
+
+        .left {
+          @include flex(row, flex-start, stretch, 16px);
+
+          .thumbnail {
+            img {
+              width: 48px;
+              height: 48px;
+            }
+          }
+          .item-detail {
+            @include flex(column, flex-start, stretch, 8px);
+
+            strong {
+              color: $rose-900;
+              @include TextPreset4Bold;
+            }
+
+            .item-price {
+              @include flex(row, flex-start, stretch, 8px);
+              @include TextPreset4;
+
+              .quantity {
+                color: $red;
+                @include TextPreset4Bold;
+              }
+            }
+          }
+        }
+        .right {
+          @include TextPreset3;
+        }
+      }
+      .order-total {
+        @include TextPreset4;
+        @include flex(row, space-between, stretch);
+
+        .total {
+          @include TextPreset2;
+          color: $rose-900;
+        }
+      }
+    }
+
+    button {
+      @include actionButton;
+    }
+  }
+}

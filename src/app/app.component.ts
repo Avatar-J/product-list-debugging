@@ -3,6 +3,7 @@ import desseretData from '../../public/data.json';
 import { Dessert } from '../models/dessert';
 import { CartComponent } from './components/cart/cart.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
+import { ModalComponent } from './components/modal/modal.component';
 
 @Component({
   selector: 'app-root',

@@ -1,6 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CartService } from '../../services/cart.service';
 import { CartItem } from '../../../models/cartItem';
+import { ModalComponent } from '../modal/modal.component';
 
 @Component({
   selector: 'app-cart',
@@ -24,5 +25,9 @@ export class CartComponent implements OnInit {
 
   onDeleteItem(item: string) {
     this.cartService.deleteCartItem(item);
+  }
+  onConfirmOrder() {
+    this.cartService.showConfirmModalOrder();
+    console.log(this.cartService.showModal);
   }
 }

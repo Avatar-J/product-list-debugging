@@ -3,11 +3,12 @@
 
 // cart section
 .cart {
-  width: 300px;
+  width: 384px;
   height: fit-content;
   flex: 1 0 380px;
   padding: 1rem;
   background-color: $white;
+  @include flex(column, flex-start, stretch, 24px);
 
   h2 {
     @include TextPreset2;
@@ -17,7 +18,7 @@
   .content {
     width: 100%;
     height: fit-content;
-    @include flex(column, center, center);
+    @include flex(column, flex-start, stretch, 24px);
 
     .cart-item {
       @include flex(row, space-between, center);
@@ -26,7 +27,7 @@
       border-bottom: 1px solid $rose-100;
 
       .item-details {
-        @include flex(column, start, center, 8px);
+        @include flex(column, start, stretch, 8px);
         width: 70%;
 
         .dessert-name {
@@ -51,21 +52,6 @@
             @include TextPreset4Bold;
           }
         }
-        .total-price {
-          width: 100%;
-          display: flex;
-          flex-direction: row;
-          justify-content: space-between;
-        }
-        .carbon-neutral {
-        }
-
-        .confirm-order {
-          background-color: $red !important;
-          width: 100%;
-          color: white;
-          padding: 24px;
-        }
       }
 
       .delete-item {
@@ -74,10 +60,38 @@
         height: 20px;
         background-color: transparent;
         outline: none;
-        border: 2px solid $rose-500;
+        border: 1px solid $rose-400;
         border-radius: 50%;
         cursor: pointer;
       }
+    }
+
+    .total-price {
+      @include flex(row, space-between, center);
+      width: 100%;
+      padding: 0.5rem;
+      @include TextPreset4;
+      color: $rose-900;
+
+      .total-price-value {
+        @include TextPreset2;
+      }
+    }
+    .carbon-neutral {
+      @include flex(row, center, center, 4px);
+      padding: 16px;
+      @include TextPreset4;
+      min-height: 52px;
+      width: 100%;
+      color: $rose-900;
+      background-color: $rose-50;
+
+      strong {
+        @include TextPreset4Bold;
+      }
+    }
+    .confirm-order {
+      @include actionButton;
     }
 
     .empty-cart-content {

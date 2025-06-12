@@ -8,6 +8,7 @@ import { BehaviorSubject, filter } from 'rxjs';
 export class CartService {
   private cartItemsSubject = new BehaviorSubject<CartItem[]>([]);
   cartItems$ = this.cartItemsSubject.asObservable();
+  showModal: boolean = false;
 
   constructor() {}
 
@@ -62,5 +63,9 @@ export class CartService {
       (acc, item) => acc + item.quantity * item.price,
       0
     );
+  }
+
+  showConfirmModalOrder() {
+    this.showModal = true;
   }
 }
