@@ -1,0 +1,81 @@
+@use "../../styles/mixins" as *;
+@use "../../styles/variables" as *;
+
+// cart section
+.cart {
+  width: 300px;
+  height: fit-content;
+  flex: 1 0 380px;
+  padding: 1rem;
+  background-color: $white;
+
+  h2 {
+    @include TextPreset2;
+    color: $red;
+  }
+
+  .content {
+    width: 100%;
+    height: fit-content;
+    @include flex(column, center, center);
+
+    .cart-item {
+      @include flex(row, space-between, center);
+      width: 100%;
+      padding: 0.5rem;
+      border-bottom: 1px solid $rose-100;
+
+      .item-details {
+        @include flex(column, start, center, 8px);
+        width: 70%;
+
+        .dessert-name {
+          @include TextPreset4Bold;
+          color: $rose-900;
+          text-align: left;
+        }
+        .price-info {
+          @include flex(row, start, center, 8px);
+
+          .quantity {
+            @include TextPreset4;
+            @include TextPreset4Bold;
+            color: $red;
+          }
+          .price {
+            color: $rose-500;
+            @include TextPreset4;
+          }
+          .item-amount {
+            color: $rose-500;
+            @include TextPreset4Bold;
+            span {
+              content: "@ ";
+            }
+          }
+        }
+      }
+
+      .delete-item {
+        @include flex(column, center, center);
+        width: 20px;
+        height: 20px;
+        background-color: transparent;
+        outline: none;
+        border: 2px solid $rose-500;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+    }
+
+    .empty-cart-content {
+      @include flex(column, center, center);
+      width: 100%;
+
+      p {
+        @include TextPreset4Bold;
+        color: $rose-500;
+      }
+    }
+  }
+}

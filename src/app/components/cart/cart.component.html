@@ -1,0 +1,32 @@
+<section class="cart">
+    <h2>Your Cart ({{totalItems}})</h2>
+    <div class="content">
+        @for(item of cartItems; track item.name) {
+        <div class="cart-item">
+            <div class="item-details">
+                <div class="dessert-name">{{item.name}}</div>
+                <div class="price-info">
+                    <div class="quantity">{{item.quantity}}<span>x</span></div>
+                    <div class="price">{{item.price}}</div>
+                    <div class="item-amount"><span></span>${{item.price * item.quantity}}</div>
+                </div>
+            </div>
+
+            <button class="delete-item">
+                <img src="images/icon-remove-item.svg" alt="delete item icon" (click)="onDeleteItem(item.name)">
+            </button>
+        </div>
+
+        }
+        @empty {
+
+        <div class="empty-cart-content">
+            <img src="images/illustration-empty-cart.svg" alt="empty cart svg">
+            <p class="empty-cart-description">
+                Your added items will appear here
+            </p>
+        </div>
+        }
+
+    </div>
+</section>
