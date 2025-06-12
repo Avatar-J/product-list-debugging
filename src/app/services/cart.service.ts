@@ -6,7 +6,6 @@ import { BehaviorSubject, filter } from 'rxjs';
   providedIn: 'root',
 })
 export class CartService {
-  //making cartItems an obseravble
   private cartItemsSubject = new BehaviorSubject<CartItem[]>([]);
   cartItems$ = this.cartItemsSubject.asObservable();
 
@@ -50,5 +49,18 @@ export class CartService {
     const updatedItems = currentItems.filter((item) => item.name !== name);
     console.log('updated list', updatedItems);
     this.cartItemsSubject.next(updatedItems);
+  }
+
+  calculateTotalItem(): number {
+    const currentItems = this.cartItemsSubject.getValue();
+    return currentItems.reduce((acc, item) => acc + item.quantity, 0);
+  }
+
+  calculateTotalPrice() {
+    const currentItems = this.cartItemsSubject.getValue();
+    return currentItems.reduce(
+      (acc, item) => acc + item.quantity * item.price,
+      0
+    );
   }
 }

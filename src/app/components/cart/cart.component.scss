@@ -49,10 +49,22 @@
           .item-amount {
             color: $rose-500;
             @include TextPreset4Bold;
-            span {
-              content: "@ ";
-            }
           }
+        }
+        .total-price {
+          width: 100%;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+        }
+        .carbon-neutral {
+        }
+
+        .confirm-order {
+          background-color: $red !important;
+          width: 100%;
+          color: white;
+          padding: 24px;
         }
       }
 

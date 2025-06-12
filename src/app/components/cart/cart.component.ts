@@ -12,20 +12,17 @@ export class CartComponent implements OnInit {
   cartService = inject(CartService);
   cartItems: CartItem[] = [];
   totalItems: number = 0;
-
-  calculateTotalItem(): number {
-    return this.cartItems.reduce((acc, item) => acc + item.quantity, 0);
-  }
+  totalPrice: number = 0;
 
   ngOnInit(): void {
     this.cartService.cartItems$.subscribe((items) => {
       this.cartItems = items;
-      this.totalItems = this.calculateTotalItem();
+      this.totalItems = this.cartService.calculateTotalItem();
+      this.totalPrice = this.cartService.calculateTotalPrice();
     });
   }
 
   onDeleteItem(item: string) {
     this.cartService.deleteCartItem(item);
-    this.totalItems = this.calculateTotalItem();
   }
 }
