@@ -1,5 +1,5 @@
 <div class="dessert-item">
-    <section class="item-image-add-to-cart">
+    <section class="item-image-add-to-cart" [ngClass]="onImageBorder()">
 
         @if(mobileView){
         <img [src]="dessert.image.mobile" alt="dessert image">
@@ -10,7 +10,8 @@
         @else {
         <img [src]="dessert.image.desktop" alt="dessert image">
         }
-        <app-add-to-cart [dessertItem]="dessert" (addCardItem)="onAddCardItem($event)" />
+        <app-add-to-cart [dessertItem]="dessert" (addCardItem)="onAddCardItem($event)"
+            (isAddToCartActive)="setImageBorder($event)" />
     </section>
     <section class="item-info">
         <p class="category">{{dessert.category}}</p>

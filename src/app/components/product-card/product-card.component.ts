@@ -3,10 +3,11 @@ import { AddToCartComponent } from '../add-to-cart/add-to-cart.component';
 import { Dessert } from '../../../models/dessert';
 import { CartItem } from '../../../models/cartItem';
 import { CartService } from '../../services/cart.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-product-card',
-  imports: [AddToCartComponent],
+  imports: [CommonModule, AddToCartComponent],
   templateUrl: './product-card.component.html',
   styleUrl: './product-card.component.scss',
 })
@@ -16,6 +17,7 @@ export class ProductCardComponent {
   cartService = inject(CartService);
   mobileView: boolean = false;
   tabletView: boolean = false;
+  imageBorder: boolean = false;
 
   @HostListener('window:resize', [])
   onResize(): void {
@@ -26,7 +28,13 @@ export class ProductCardComponent {
     this.tabletView = window.innerWidth < 1200;
     this.mobileView = window.innerWidth < 768;
   }
-
+  setImageBorder(state: boolean) {
+    console.log('is added', state);
+    this.imageBorder = state;
+  }
+  onImageBorder() {
+    return { highlight: this.imageBorder };
+  }
   onAddCardItem(quantity: number) {
     if (quantity === 0) {
       this.cartService.deleteCartItem(this.dessert.name);

@@ -24,6 +24,9 @@ export class AddToCartComponent implements OnInit {
   @Output()
   addCardItem = new EventEmitter<number>();
 
+  @Output()
+  isAddToCartActive = new EventEmitter<boolean>(false);
+
   cartService = inject(CartService);
   isAddedToCart = false;
   quantity = 1;
@@ -47,11 +50,13 @@ export class AddToCartComponent implements OnInit {
   addToCart() {
     this.isAddedToCart = true;
     this.addCardItem.emit(this.quantity);
+    this.isAddToCartActive.emit(true);
   }
 
   decreaseProductItem() {
     if (this.quantity < 1) {
       this.isAddedToCart = false;
+      this.isAddToCartActive.emit(false);
     }
     if (this.quantity >= 1) {
       this.quantity--;
@@ -59,6 +64,7 @@ export class AddToCartComponent implements OnInit {
     this.addCardItem.emit(this.quantity);
     if (this.quantity === 0) {
       this.isAddedToCart = false;
+      this.isAddToCartActive.emit(false);
       this.quantity = 1;
     }
   }

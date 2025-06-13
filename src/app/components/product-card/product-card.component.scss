@@ -11,12 +11,17 @@
   }
 
   @include breakpoint(480px) {
-    width: 327px;
+    width: 100%;
+  }
+
+  .highlight {
+    border: 2px solid $red;
   }
 
   .item-image-add-to-cart {
     width: 100%;
     @include flex(column);
+    border-radius: 10px;
 
     img {
       aspect-ratio: 1;

@@ -40,6 +40,8 @@
       padding: 24px;
       @include flex(column, flex-start, stretch, 24px);
       background-color: $rose-100;
+      max-height: 200px;
+      overflow-y: auto;
 
       .item {
         width: 100%;
