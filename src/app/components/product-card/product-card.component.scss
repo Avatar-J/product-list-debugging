@@ -21,7 +21,7 @@
   .item-image-add-to-cart {
     width: 100%;
     @include flex(column);
-    border-radius: 10px;
+    border-radius: 12px;
 
     img {
       aspect-ratio: 1;

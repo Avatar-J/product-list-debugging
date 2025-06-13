@@ -1,11 +1,11 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CartService } from '../../services/cart.service';
 import { CartItem } from '../../../models/cartItem';
-import { ModalComponent } from '../modal/modal.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-cart',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss',
 })

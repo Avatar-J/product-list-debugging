@@ -13,7 +13,7 @@ main {
   // flex-wrap: wrap;
 
   @include breakpoint(768px) {
-    width: 688px;
+    width: 100%;
     padding: 0 16px;
     @include flex(column, flex-start, stretch, 2rem);
   }
@@ -34,10 +34,16 @@ main {
 }
 
 .desserts-container {
-  @include flex(row, flex-start, stretch, 1.5rem);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 32px;
   flex-wrap: wrap;
   width: 100%;
   height: 100%;
+
+  @include breakpoint(480px) {
+    grid-template-columns: 1fr;
+  }
 }
 
 // .add-to-cart-container button {

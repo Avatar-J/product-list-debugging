@@ -24,21 +24,21 @@
                         <strong>{{item.name}}</strong>
                         <div class="item-price">
                             <div class="quantity">{{item.quantity}}x</div>
-                            <div>&#64; ${{item.price}}</div>
+                            <div>&#64; {{item.price | currency:'USD':'symbol':'1.2-2'}}</div>
                         </div>
                     </div>
 
                 </div>
 
                 <div class="right">
-                    ${{item.price * item.quantity}}
+                    {{item.price * item.quantity | currency:'USD':'symbol':'1.2-2'}}
                 </div>
             </div>
 
             }
             <div class="order-total">
                 <div>Order Total</div>
-                <div class="total">$ {{cartService.calculateTotalPrice()}}</div>
+                <div class="total">{{cartService.calculateTotalPrice() | currency:'USD':'symbol':'1.2-2'}}</div>
             </div>
 
         </div>

@@ -68,4 +68,8 @@ export class CartService {
   showConfirmModalOrder() {
     this.showModal = true;
   }
+
+  clearCart() {
+    this.cartItemsSubject.next([]);
+  }
 }

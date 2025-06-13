@@ -7,8 +7,8 @@
                 <div class="dessert-name">{{item.name}}</div>
                 <div class="price-info">
                     <div class="quantity">{{item.quantity}}<span>x</span></div>
-                    <div class="price">&#64; ${{item.price}}</div>
-                    <div class="item-amount">${{item.price * item.quantity}}</div>
+                    <div class="price">&#64; {{item.price | currency:'USD':'symbol':'1.2-2'}}</div>
+                    <div class="item-amount">{{item.price * item.quantity | currency:'USD':'symbol':'1.2-2'}}</div>
                 </div>
             </div>
 
@@ -31,7 +31,7 @@
         @if(cartItems.length !== 0){
         <div class="total-price">
             <div>Order Total</div>
-            <div class="total-price-value">${{totalPrice}}</div>
+            <div class="total-price-value">{{totalPrice | currency:'USD':'symbol':'1.2-2'}}</div>
         </div>
 
         <div class="carbon-neutral">

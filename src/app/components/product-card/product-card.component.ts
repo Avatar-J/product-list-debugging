@@ -28,10 +28,16 @@ export class ProductCardComponent {
     this.tabletView = window.innerWidth < 1200;
     this.mobileView = window.innerWidth < 768;
   }
-  setImageBorder(state: boolean) {
-    console.log('is added', state);
-    this.imageBorder = state;
+
+  constructor() {
+    this.cartService.cartItems$.subscribe({
+      next: (items) => {
+        const { itemIndex } = this.cartService.isItemInCart(this.dessert?.name);
+        this.imageBorder = itemIndex !== -1 ? true : false;
+      },
+    });
   }
+
   onImageBorder() {
     return { highlight: this.imageBorder };
   }

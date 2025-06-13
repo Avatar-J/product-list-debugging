@@ -10,12 +10,11 @@
         @else {
         <img [src]="dessert.image.desktop" alt="dessert image">
         }
-        <app-add-to-cart [dessertItem]="dessert" (addCardItem)="onAddCardItem($event)"
-            (isAddToCartActive)="setImageBorder($event)" />
+        <app-add-to-cart [dessertItem]="dessert" (addCardItem)="onAddCardItem($event)" />
     </section>
     <section class="item-info">
         <p class="category">{{dessert.category}}</p>
         <p class="name">{{dessert.name}}</p>
-        <p class="price">{{dessert.price}}</p>
+        <p class="price">{{dessert.price | currency:'USD':'symbol':'1.2-2'}}</p>
     </section>
 </div>
