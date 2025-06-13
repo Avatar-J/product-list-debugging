@@ -18,6 +18,12 @@
   border-radius: 999px;
 }
 
+@mixin breakpoint($bp: 0) {
+  @media (max-width: $bp) {
+    @content;
+  }
+}
+
 @mixin TextPreset1 {
   font-size: 40px;
   line-height: 120%;

@@ -6,6 +6,9 @@ body {
   @include flex();
   width: 100%;
   min-height: 100dvh;
+  background-color: $rose-50;
+  margin: 0 auto;
+  // padding: 40px;
   // position: relative;
 }
 

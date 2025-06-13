@@ -10,6 +10,14 @@
   background-color: $white;
   @include flex(column, flex-start, stretch, 24px);
 
+  @include breakpoint(768px) {
+    width: 100%;
+  }
+
+  @include breakpoint(480px) {
+    width: 100%;
+  }
+
   h2 {
     @include TextPreset2;
     color: $red;

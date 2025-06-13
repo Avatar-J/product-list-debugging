@@ -1,6 +1,15 @@
 <div class="dessert-item">
     <section class="item-image-add-to-cart">
+
+        @if(mobileView){
+        <img [src]="dessert.image.mobile" alt="dessert image">
+        }
+        @else if(tabletView){
+        <img [src]="dessert.image.tablet" alt="dessert image">
+        }
+        @else {
         <img [src]="dessert.image.desktop" alt="dessert image">
+        }
         <app-add-to-cart [dessertItem]="dessert" (addCardItem)="onAddCardItem($event)" />
     </section>
     <section class="item-info">

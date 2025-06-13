@@ -1,4 +1,4 @@
-import { Component, Input, inject } from '@angular/core';
+import { Component, Input, inject, HostListener } from '@angular/core';
 import { AddToCartComponent } from '../add-to-cart/add-to-cart.component';
 import { Dessert } from '../../../models/dessert';
 import { CartItem } from '../../../models/cartItem';
@@ -14,6 +14,18 @@ export class ProductCardComponent {
   @Input({ required: true }) dessert!: Dessert;
 
   cartService = inject(CartService);
+  mobileView: boolean = false;
+  tabletView: boolean = false;
+
+  @HostListener('window:resize', [])
+  onResize(): void {
+    this.updateDeviceType();
+  }
+
+  private updateDeviceType(): void {
+    this.tabletView = window.innerWidth < 1200;
+    this.mobileView = window.innerWidth < 768;
+  }
 
   onAddCardItem(quantity: number) {
     if (quantity === 0) {

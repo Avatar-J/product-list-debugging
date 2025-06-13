@@ -11,6 +11,15 @@ main {
   margin: auto;
   padding: 1rem 0;
   // flex-wrap: wrap;
+
+  @include breakpoint(768px) {
+    width: 688px;
+    padding: 0 16px;
+    @include flex(column, flex-start, stretch, 2rem);
+  }
+  @include breakpoint(480px) {
+    width: 100%;
+  }
 }
 
 .desserts {
