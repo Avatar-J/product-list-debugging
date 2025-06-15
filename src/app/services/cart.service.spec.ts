@@ -39,27 +39,37 @@ describe('CartService', () => {
     });
   });
 
+  it('should add an item to the cart if new', () => {
+    service.addToCart(mockItem2, mockItem2.name);
+
+    service.cartItems$.subscribe((items) => {
+      expect(items.length).toBe(2);
+    });
+  });
+
   it('should update quantity if item already exists in cart', () => {
-    const spyUpdateQuantity = spyOn(service, 'updateQuantity');
+    const spyUpdateQuantity = jest.spyOn(service, 'updateQuantity');
+    const spyIsItemInCart = jest.spyOn(service, 'isItemInCart');
     const updatedItem = { ...mockItem, quantity: 5 };
 
-    service.addToCart(mockItem, mockItem.name);
     service.addToCart(updatedItem, updatedItem.name);
 
     service.cartItems$.subscribe((items) => {
       expect(items[0].quantity).toBe(5);
       expect(spyUpdateQuantity).toHaveBeenCalledTimes(1);
+      expect(spyIsItemInCart).toHaveBeenCalledTimes(1);
     });
   });
 
   it('should update quantity using updateCardItem()', () => {
-    const spyUpdateQuantity = spyOn(service, 'updateQuantity');
-    service.addToCart(mockItem, mockItem.name);
+    const spyUpdateQuantity = jest.spyOn(service, 'updateQuantity');
+    const spyIsItemInCart = jest.spyOn(service, 'isItemInCart');
     service.updateCardItem(mockItem.name, 8);
 
     service.cartItems$.subscribe((items) => {
       expect(items[0].quantity).toBe(8);
       expect(spyUpdateQuantity).toHaveBeenCalledTimes(1);
+      expect(spyIsItemInCart).toHaveBeenCalledTimes(1);
     });
   });
 
@@ -74,7 +84,7 @@ describe('CartService', () => {
 
   it('should calculate total items correctly', () => {
     service.addToCart(mockItem, mockItem.name);
-    service.addToCart(mockItem2, mockItem.name);
+    service.addToCart(mockItem2, mockItem2.name);
 
     const totalItems = service.calculateTotalItem();
     expect(totalItems).toBe(5);
@@ -90,6 +100,6 @@ describe('CartService', () => {
 
   it('should show confirm modal when called', () => {
     service.showConfirmModalOrder();
-    expect(service.showModal).toBeTrue();
+    expect(service.showModal).toBeTruthy();
   });
 });
