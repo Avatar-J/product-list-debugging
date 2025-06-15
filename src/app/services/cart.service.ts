@@ -48,7 +48,6 @@ export class CartService {
   deleteCartItem(name: string) {
     const currentItems = this.cartItemsSubject.getValue();
     const updatedItems = currentItems.filter((item) => item.name !== name);
-    console.log('updated list', updatedItems);
     this.cartItemsSubject.next(updatedItems);
   }
 
